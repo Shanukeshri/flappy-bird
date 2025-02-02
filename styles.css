@@ -1,0 +1,42 @@
+html {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: aquamarine;
+    padding: 0px;
+    margin: 0px;
+}
+
+#bird {
+    background-color: yellow;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    bottom: 50vh;
+    left: 33vw;
+}
+
+.pillar-unit {
+    position: absolute;
+
+    width: 90px;
+    height: 100vh;
+}
+
+.pillar-up {
+    position: absolute;
+    width: 100%;
+    background-color: rgb(22, 217, 94);
+    height: 30vh;
+    top: 0px;
+}
+
+.pillar-down {
+    position: absolute;
+    width: 100%;
+    background-color: brown;
+    height: calc(100vh - 30vh - 170px);
+    bottom: 0vh;
+}
