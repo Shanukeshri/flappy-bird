@@ -1,8 +1,9 @@
 function createpillar() {
 
-  let multi = Math.random;
+
 
     setInterval(() => {
+      let multi = Math.random();
       let pillarPair = document.createElement("div");
       pillarPair.classList.add("pillar-unit");
       pillarPair.style.left = "1300px";
@@ -10,12 +11,12 @@ function createpillar() {
   
       let pillarUp = document.createElement("div");
       pillarUp.classList.add("pillar-up");
-      
+      pillarUp.style.height = `${multi*500}px`
       pillarPair.appendChild(pillarUp);
   
       let pillarDown = document.createElement("div");
       pillarDown.classList.add("pillar-down");
-      
+      pillarDown.style.height = `calc(100vh - ${multi*500}px - 170px)`;
       pillarPair.appendChild(pillarDown);
   
       let lt = 1300;

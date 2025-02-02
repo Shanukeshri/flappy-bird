@@ -1,3 +1,2 @@
-pillarDown.style.height = `calc(vh - ${multi*500}px - 170px)`
 
-pillarUp.style.height = `${multi*500}px`
+
