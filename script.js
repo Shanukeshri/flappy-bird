@@ -54,6 +54,7 @@ function jump() {
 
 
 function play() {
+
   score = -3 
   countScore()
 
@@ -151,3 +152,4 @@ function collision() {
 function countScore(){
   countId = setInterval(()=>{score++},1900)
 }
+

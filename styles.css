@@ -4,13 +4,16 @@ html {
 }
 
 body {
-    background-color: aquamarine;
+    background-color: grey;
+    background-image: url("./images/bg.jpeg");
+    background-size:cover;
     padding: 0px;
     margin: 0px;
 }
 
 #bird {
-    background-color: yellow;
+    background-image: url("./images/plane.png");
+    background-size: 100% 100%;
     position: absolute;
     height: 40px;
     width: 40px;
@@ -25,14 +28,17 @@ body {
 }
 
 .pillar-up {
+    background-image: url("./images/tower.png");
+    background-size: 100% ;
     position: absolute;
     width: 100%;
     background-color: brown;
-    height: 30vh;
     top: 0px;
 }
 
 .pillar-down {
+    background-image: url("./images/tower.png");
+    background-size: 100% ;
     position: absolute;
     width: 100%;
     background-color: brown;
