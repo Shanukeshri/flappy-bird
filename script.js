@@ -6,7 +6,9 @@ let fallId;
 let jumpId;
 let countId;
 let isJumping = false;
+let isFalling = false;
 let cnt = 0
+let acc = 1;
 
 window.addEventListener("keydown", space);
 
@@ -14,12 +16,20 @@ function space(event) {
   if (event.key === " ") {
     if (alive) {
       isJumping = true;
-      setTimeout(() => { isJumping = false }, 150)
+      acc = 1
+      setTimeout(() => {
+        isJumping = false;
+        isFalling = true;
+        fallId = requestAnimationFrame(fall);
+      }, 250)
+      isFalling = false
       requestAnimationFrame(jump);
 
     }
     else {
       alive = true;
+      isFalling = true
+      acc = 1
       if (cnt > 0) {
         divDelete();
       }
@@ -44,7 +54,7 @@ function divDelete() {
 function jump() {
 
   let currHt = document.getElementById("bird").getBoundingClientRect().y;
-  document.getElementById("bird").style.top = `${currHt - 13.5 }px`
+  document.getElementById("bird").style.top = `${currHt - 7}px`
 
   if (isJumping) {
     requestAnimationFrame(jump)
@@ -52,21 +62,20 @@ function jump() {
 
 }
 
-
 function play() {
 
-  score = -3 
+  score = -3
   countScore()
-
-  function fall() {
-    let currHt = document.getElementById("bird").getBoundingClientRect().y;
-    document.getElementById("bird").style.top = `${currHt + 4}px`
-    if (alive) { fallId = requestAnimationFrame(fall) }
-  }
   fallId = requestAnimationFrame(fall);
   createpillar();
 }
 
+function fall() {
+  let currHt = document.getElementById("bird").getBoundingClientRect().y;
+  document.getElementById("bird").style.top = `${currHt + 2 * acc}px`
+  acc += 0.075
+  if (isFalling) { fallId = requestAnimationFrame(fall) }
+}
 
 function createpillar() {
   pilID = setInterval(() => {
@@ -83,7 +92,7 @@ function createpillar() {
 
     let pillarDown = document.createElement("div");
     pillarDown.classList.add("pillar-down");
-    pillarDown.style.height = `calc(100vh - ${multi * 500}px - 170px)`;
+    pillarDown.style.height = `calc(100vh - ${multi * 500}px - 200px)`;
     pillarPair.appendChild(pillarDown);
 
     let lt = 1300;
@@ -103,21 +112,23 @@ function createpillar() {
         let bheigt = bHitBox.height, bx = bHitBox.x, by = bHitBox.y, ux = uHitBox.x, dx = dHitBox.x, bwidth = bHitBox.width;
         let uwidth = uHitBox.width, uheight = uHitBox.height, dwidth = dHitBox.width, dheight = dHitBox.height;
 
-        if (bx >= (ux - bwidth) && bx <= (ux + uwidth) && by <= uheight) {
+        if (by <= 0 || by >= 672) {
           clearInterval(pilID)
           cancelAnimationFrame(fallId)
           collision();
         }
-        else if (bx >= (dx - bwidth) && bx <= (dx + dwidth) && by >= (uheight + 170 - bheigt)) {
+
+        else if (bx >= (ux - bwidth) && bx <= (ux + uwidth) && by <= uheight) {
           clearInterval(pilID)
           cancelAnimationFrame(fallId)
           collision();
         }
-        else if (by <= 0 || by >= 672) {
+        else if (bx >= (dx - bwidth) && bx <= (dx + dwidth) && by >= (uheight + 200 - bheigt)) {
           clearInterval(pilID)
           cancelAnimationFrame(fallId)
           collision();
         }
+        
 
         if (alive) {
           requestAnimationFrame(movePillar);
@@ -133,23 +144,23 @@ function createpillar() {
 }
 
 function collision() {
-  
+
   cancelAnimationFrame(fallId)
   clearInterval(countId)
   alive = false;
 
   const blur = document.createElement("div");
-  blur.setAttribute("id" , "blur")
+  blur.setAttribute("id", "blur")
   document.body.appendChild(blur);
 
   const scorebrd = document.createElement("div");
-  scorebrd.setAttribute("id" , "scorebrd")
+  scorebrd.setAttribute("id", "scorebrd")
   scorebrd.innerText = `SCORE : ${score}`
 
   blur.appendChild(scorebrd);
 }
 
-function countScore(){
-  countId = setInterval(()=>{score++},1900)
+function countScore() {
+  countId = setInterval(() => { score++ }, 1900)
 }
 
