@@ -14,7 +14,7 @@ function space(event) {
   if (event.key === " ") {
     if (alive) {
       isJumping = true;
-      setTimeout(() => { isJumping = false }, 100)
+      setTimeout(() => { isJumping = false }, 150)
       requestAnimationFrame(jump);
 
     }
@@ -44,7 +44,7 @@ function divDelete() {
 function jump() {
 
   let currHt = document.getElementById("bird").getBoundingClientRect().y;
-  document.getElementById("bird").style.top = `${currHt - 17}px`
+  document.getElementById("bird").style.top = `${currHt - 13.5 }px`
 
   if (isJumping) {
     requestAnimationFrame(jump)
@@ -90,8 +90,8 @@ function createpillar() {
 
     function movePillar() {
       if (lt >= -90) {
-        pillarPair.style.left = `${lt - 2.5}px`;
-        lt -= 2.5;
+        pillarPair.style.left = `${lt - 5}px`;
+        lt -= 5;
 
 
         let bHitBox = document.getElementById("bird").getBoundingClientRect();
