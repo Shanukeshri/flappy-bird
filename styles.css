@@ -12,7 +12,7 @@ body {
 }
 
 #bird {
-    background-image: url("./images/plane.png");
+    background-image: url("./images/bird.png");
     background-size: 100% 100%;
     position: absolute;
     height: 40px;
@@ -28,7 +28,7 @@ body {
 }
 
 .pillar-up {
-    background-image: url("./images/tower.png");
+    background-image: url("./images/obstacle.png");
     background-size: 100% ;
     position: absolute;
     width: 100%;
