@@ -1,9 +1,10 @@
 
-let score = 0;
+let score = -3;
 let alive = false;
 let pilID;
 let fallId;
 let jumpId;
+let countId;
 let isJumping = false;
 let cnt = 0
 
@@ -13,7 +14,7 @@ function space(event) {
   if (event.key === " ") {
     if (alive) {
       isJumping = true;
-      setTimeout(() => { isJumping = false }, 30)
+      setTimeout(() => { isJumping = false }, 100)
       requestAnimationFrame(jump);
 
     }
@@ -43,21 +44,23 @@ function divDelete() {
 function jump() {
 
   let currHt = document.getElementById("bird").getBoundingClientRect().y;
-  document.getElementById("bird").style.top = `${currHt - 15}px`
+  document.getElementById("bird").style.top = `${currHt - 17}px`
 
-  if (isJumping) 
-    {
-      requestAnimationFrame(jump) 
-    }
+  if (isJumping) {
+    requestAnimationFrame(jump)
+  }
 
 }
 
 
 function play() {
+  score = -3 
+  countScore()
+
   function fall() {
     let currHt = document.getElementById("bird").getBoundingClientRect().y;
-    document.getElementById("bird").style.top = `${currHt + 3}px`
-    requestAnimationFrame(fall)
+    document.getElementById("bird").style.top = `${currHt + 4}px`
+    if (alive) { fallId = requestAnimationFrame(fall) }
   }
   fallId = requestAnimationFrame(fall);
   createpillar();
@@ -109,7 +112,7 @@ function createpillar() {
           cancelAnimationFrame(fallId)
           collision();
         }
-        else if (by == 0 || by == 712) {
+        else if (by <= 0 || by >= 672) {
           clearInterval(pilID)
           cancelAnimationFrame(fallId)
           collision();
@@ -128,4 +131,23 @@ function createpillar() {
   }, 1900);
 }
 
+function collision() {
+  
+  cancelAnimationFrame(fallId)
+  clearInterval(countId)
+  alive = false;
 
+  const blur = document.createElement("div");
+  blur.setAttribute("id" , "blur")
+  document.body.appendChild(blur);
+
+  const scorebrd = document.createElement("div");
+  scorebrd.setAttribute("id" , "scorebrd")
+  scorebrd.innerText = `SCORE : ${score}`
+
+  blur.appendChild(scorebrd);
+}
+
+function countScore(){
+  countId = setInterval(()=>{score++},1900)
+}
