@@ -5,7 +5,7 @@ html {
 
 body {
     background-color: grey;
-    background-image: url("./images/bg.jpeg");
+    background-image: url("./images/bg.png");
     background-size:cover;
     padding: 0px;
     margin: 0px;
@@ -37,7 +37,7 @@ body {
 }
 
 .pillar-down {
-    background-image: url("./images/tower.png");
+    background-image: url("./images/obstacle.png");
     background-size: 100% ;
     position: absolute;
     width: 100%;
