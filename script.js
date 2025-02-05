@@ -1,5 +1,5 @@
 
-let score = -3;
+let score = -2;
 let alive = false;
 let pilID;
 let fallId;
@@ -64,7 +64,7 @@ function jump() {
 
 function play() {
 
-  score = -3
+  score = -2
   countScore()
   fallId = requestAnimationFrame(fall);
   createpillar();
