@@ -1,0 +1,23 @@
+{
+  "name": "flappy-bird",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shanukeshri/flappy-plane.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shanukeshri/flappy-plane/issues"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "homepage": "https://github.com/Shanukeshri/flappy-plane#readme",
+  "description": ""
+}
