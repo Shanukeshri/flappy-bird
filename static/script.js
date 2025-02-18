@@ -140,7 +140,7 @@ function createpillar() {
     }
 
     requestAnimationFrame(movePillar);
-  }, 1900);
+  }, 2500);
 }
 
 function collision() {
@@ -161,6 +161,6 @@ function collision() {
 }
 
 function countScore() {
-  countId = setInterval(() => { score++ }, 1900)
+  countId = setInterval(() => { score++ }, 2500)
 }
 
